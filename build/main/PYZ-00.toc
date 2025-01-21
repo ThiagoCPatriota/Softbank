@@ -283,6 +283,9 @@
    'C:\\Program '
    'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.13_3.13.496.0_x64__qbz5n2kfra8p0\\Lib\\base64.py',
    'PYMODULE'),
+  ('bcrypt',
+   'C:\\Users\\thiag\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python313\\site-packages\\bcrypt\\__init__.py',
+   'PYMODULE'),
   ('bisect',
    'C:\\Program '
    'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.13_3.13.496.0_x64__qbz5n2kfra8p0\\Lib\\bisect.py',
@@ -1475,19 +1478,21 @@
    'C:\\Program '
    'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.13_3.13.496.0_x64__qbz5n2kfra8p0\\Lib\\inspect.py',
    'PYMODULE'),
-  ('inteface', '-', 'PYMODULE'),
-  ('inteface.depo',
-   'C:\\Users\\thiag\\OneDrive\\Área de Trabalho\\Softbank\\inteface\\depo.py',
+  ('interface', '-', 'PYMODULE'),
+  ('interface.depo',
+   'C:\\Users\\thiag\\OneDrive\\Área de Trabalho\\Softbank\\interface\\depo.py',
    'PYMODULE'),
-  ('inteface.moeda',
-   'C:\\Users\\thiag\\OneDrive\\Área de Trabalho\\Softbank\\inteface\\moeda.py',
-   'PYMODULE'),
-  ('inteface.pessoa',
+  ('interface.moeda',
    'C:\\Users\\thiag\\OneDrive\\Área de '
-   'Trabalho\\Softbank\\inteface\\pessoa.py',
+   'Trabalho\\Softbank\\interface\\moeda.py',
    'PYMODULE'),
-  ('inteface.saque',
-   'C:\\Users\\thiag\\OneDrive\\Área de Trabalho\\Softbank\\inteface\\saque.py',
+  ('interface.pessoa',
+   'C:\\Users\\thiag\\OneDrive\\Área de '
+   'Trabalho\\Softbank\\interface\\pessoa.py',
+   'PYMODULE'),
+  ('interface.saque',
+   'C:\\Users\\thiag\\OneDrive\\Área de '
+   'Trabalho\\Softbank\\interface\\saque.py',
    'PYMODULE'),
   ('ipaddress',
    'C:\\Program '

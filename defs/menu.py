@@ -1,8 +1,8 @@
 import flet as ft
-from inteface.depo import Deposito
-from inteface.moeda import Moedas
-from inteface.pessoa import Perfil
-from inteface.saque import Retirar
+from interface.depo import Deposito
+from interface.moeda import Moedas
+from interface.pessoa import Perfil
+from interface.saque import Retirar
 
 def Nav(page, conta):
     page.navigation_bar = ft.NavigationBar(

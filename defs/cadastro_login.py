@@ -1,4 +1,5 @@
 import flet as ft
+from peewee import DoesNotExist
 from eldatabase.database import db, User, Account
 from defs.utilitarios import *
 from defs.menu import Menu_principal
@@ -101,7 +102,7 @@ def Cadastro(page):
         else:
             try:
                 if validador_cpf(cpf.value):
-                    User.create(nome=nome.value, email=email.value, senha=senha.value, cpf=cpf.value)
+                    User.create(nome=nome.value, email=email.value, senha=codificar_senha(senha.value), cpf=cpf.value)
                     Account.create(email=email.value, usuario=nome.value, saldo=0)
                     mensagem.value = 'Cadastro Realizado com Sucesso!'
                     mensagem.color = 'green'
@@ -182,22 +183,27 @@ def Login(page):
     def Confirma_login(e):
         mensagem.color='RED'
         if not email.value:
-            mensagem.value = 'Porfavor, Insira um email válido!'
+            mensagem.value = 'Preencha todos os campos!'
         elif not senha.value:
-            mensagem.value = 'Porfavor, Insira um senha válido!'
+            mensagem.value = 'Preencha todos os campos!'
         elif not cpf.value:
-            mensagem.value = 'Porfavor, Insira uma senha válida!'
+            mensagem.value = 'Preencha todos os campos!'
         else:
 
             try: #tente
-                User.get((User.email == email.value) & (User.senha == senha.value) & (User.cpf == cpf.value))
-                conta = Account.get(Account.email == email.value)
-                mensagem.value = 'Login Realizado com Sucesso!'
-                mensagem.color = 'green'
-                Menu_principal(page, conta)
+                usuario = User.get((User.email == email.value) & (User.cpf == cpf.value))
+                if verificar_senha(senha.value, usuario.senha):
+                    conta = Account.get(Account.email == email.value)
+                    mensagem.value = 'Login Realizado com Sucesso!'
+                    mensagem.color = 'green'
+                    Menu_principal(page, conta)
+                else:
+                    mensagem.value = 'Senha incorreta!'
+            except DoesNotExist:
+                mensagem.value = 'Usuário ou cpf incorretos!'
             except Exception as ex:
                 mensagem.value = f'Erro ao cadastrar: {ex}'
-                mensagem.color = 'red'
+
         page.update()
 
     container_login = ft.Container(
@@ -245,6 +251,7 @@ def Login(page):
                             ),
                             ft.TextButton(
                                 'Esqueceu sua senha?',
+                                on_click = lambda e: esq_senha(page)
                             ),
                         ],
                         spacing=10,  # Espaçamento vertical entre os itens
@@ -264,3 +271,97 @@ def Login(page):
         container_login
     )
 
+
+def esq_senha(page):
+    page.controls.clear()
+
+
+    cpf = ft.TextField(label='Digite seu cpf (apenas números):', max_length = 11)
+    email = ft.TextField(label='Digite seu email:')
+    nova_senha = ft.TextField(label='Digite sua nova senha:', password = True)
+    conf_nova_senha = ft.TextField(label='Confirme a nova senha:', password = True)
+    mensagem = ft.Text(value='')
+
+    def confirmar_troca_senha(e):
+        mensagem.color = 'RED'
+        if not cpf.value:
+            mensagem.value = 'Preencha todos os campos!'
+        elif not email.value:
+            mensagem.value = 'Preencha todos os campos!'
+        elif not nova_senha.value:
+            mensagem.value = 'Preencha todos os campos!'
+        elif not conf_nova_senha.value:
+            mensagem.value = 'Preencha todos os campos!'
+        elif nova_senha.value != conf_nova_senha.value:
+            mensagem.value = 'Senhas diferentes digitadas!'
+        else:
+            try:
+                usuario = User.get((User.cpf == cpf.value) & (User.email == email.value))
+                usuario.senha = codificar_senha(conf_nova_senha.value)
+                usuario.save()
+                Cadslog(page)  
+            except DoesNotExist:
+                mensagem.value = 'Usuário não encontrado'
+        page.update()
+    container_esq_senha = ft.Container(
+        expand = True,
+        content = ft.Stack(
+            controls = [
+                ft.Container(
+                    ft.Image(
+                        src = 'imgs/login_bg.jpg',
+                        fit = ft.ImageFit.COVER
+                    ),
+                    opacity = 0.2
+                ),
+                ft.Container(
+                    width = 400,
+                    height = 450,
+                    bgcolor = ft.colors.with_opacity(0.5, '#000000'),
+                    border_radius = 15,
+                    padding = 20,
+                    content = ft.Column(
+                        controls = [
+                            ft.Text(
+                                value = 'Redefinir senha',
+                                size = 24,
+                                weight = 'bold',
+                                color = "#6C63FF", #roxo
+                                text_align = 'center'
+                            ),
+                            cpf,
+                            email,
+                            nova_senha,
+                            conf_nova_senha,
+                            mensagem,
+                            ft.Row(
+                                controls = [
+                                    ft.ElevatedButton(
+                                        'Redefinir',
+                                        on_click = lambda e: confirmar_troca_senha(page)
+                                    ),
+                                    ft.ElevatedButton(
+                                        'Voltar',
+                                        on_click = lambda e: Cadslog(page)
+                                    ),
+                                ],
+                            ),
+
+                        ],
+                        spacing=10,  # Espaçamento vertical entre os itens
+                        alignment=ft.MainAxisAlignment.CENTER,  # Centraliza os itens verticalmente
+                        horizontal_alignment=ft.CrossAxisAlignment.CENTER,
+                    ),
+
+                    
+                ),
+            ],
+            alignment=ft.alignment.center, 
+        )
+
+    )
+
+    page.add(
+        container_esq_senha
+    )
+    page.update()

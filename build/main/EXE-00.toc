@@ -123,6 +123,9 @@
    'C:\\Program '
    'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.13_3.13.496.0_x64__qbz5n2kfra8p0\\DLLs\\_queue.pyd',
    'EXTENSION'),
+  ('bcrypt\\_bcrypt.pyd',
+   'C:\\Users\\thiag\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python313\\site-packages\\bcrypt\\_bcrypt.pyd',
+   'EXTENSION'),
   ('charset_normalizer\\md__mypyc.cp313-win_amd64.pyd',
    'C:\\Users\\thiag\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python313\\site-packages\\charset_normalizer\\md__mypyc.cp313-win_amd64.pyd',
    'EXTENSION'),
@@ -165,6 +168,10 @@
    'C:\\Program '
    'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.13_3.13.496.0_x64__qbz5n2kfra8p0\\DLLs\\libffi-8.dll',
    'BINARY'),
+  ('python3.dll',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.13_3.13.496.0_x64__qbz5n2kfra8p0\\python3.dll',
+   'BINARY'),
   ('sqlite3.dll',
    'C:\\Program '
    'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.13_3.13.496.0_x64__qbz5n2kfra8p0\\DLLs\\sqlite3.dll',
@@ -184,6 +191,10 @@
   ('defs\\__pycache__\\database.cpython-313.pyc',
    'C:\\Users\\thiag\\OneDrive\\Área de '
    'Trabalho\\Softbank\\defs\\__pycache__\\database.cpython-313.pyc',
+   'DATA'),
+  ('defs\\__pycache__\\esq_senha.cpython-313.pyc',
+   'C:\\Users\\thiag\\OneDrive\\Área de '
+   'Trabalho\\Softbank\\defs\\__pycache__\\esq_senha.cpython-313.pyc',
    'DATA'),
   ('defs\\__pycache__\\instalação_bibliotecas.cpython-313.pyc',
    'C:\\Users\\thiag\\OneDrive\\Área de '
@@ -224,10 +235,6 @@
    'C:\\Users\\thiag\\OneDrive\\Área de '
    'Trabalho\\Softbank\\eldatabase\\database.py',
    'DATA'),
-  ('eldatabase\\database_softbank.db',
-   'C:\\Users\\thiag\\OneDrive\\Área de '
-   'Trabalho\\Softbank\\eldatabase\\database_softbank.db',
-   'DATA'),
   ('imgs\\all_menu_bg.jpg',
    'C:\\Users\\thiag\\OneDrive\\Área de '
    'Trabalho\\Softbank\\imgs\\all_menu_bg.jpg',
@@ -249,34 +256,40 @@
   ('imgs\\teste.png',
    'C:\\Users\\thiag\\OneDrive\\Área de Trabalho\\Softbank\\imgs\\teste.png',
    'DATA'),
-  ('inteface\\__pycache__\\depo.cpython-313.pyc',
+  ('interface\\__pycache__\\depo.cpython-313.pyc',
    'C:\\Users\\thiag\\OneDrive\\Área de '
-   'Trabalho\\Softbank\\inteface\\__pycache__\\depo.cpython-313.pyc',
+   'Trabalho\\Softbank\\interface\\__pycache__\\depo.cpython-313.pyc',
    'DATA'),
-  ('inteface\\__pycache__\\moeda.cpython-313.pyc',
+  ('interface\\__pycache__\\esq_senha.cpython-313.pyc',
    'C:\\Users\\thiag\\OneDrive\\Área de '
-   'Trabalho\\Softbank\\inteface\\__pycache__\\moeda.cpython-313.pyc',
+   'Trabalho\\Softbank\\interface\\__pycache__\\esq_senha.cpython-313.pyc',
    'DATA'),
-  ('inteface\\__pycache__\\pessoa.cpython-313.pyc',
+  ('interface\\__pycache__\\moeda.cpython-313.pyc',
    'C:\\Users\\thiag\\OneDrive\\Área de '
-   'Trabalho\\Softbank\\inteface\\__pycache__\\pessoa.cpython-313.pyc',
+   'Trabalho\\Softbank\\interface\\__pycache__\\moeda.cpython-313.pyc',
    'DATA'),
-  ('inteface\\__pycache__\\saque.cpython-313.pyc',
+  ('interface\\__pycache__\\pessoa.cpython-313.pyc',
    'C:\\Users\\thiag\\OneDrive\\Área de '
-   'Trabalho\\Softbank\\inteface\\__pycache__\\saque.cpython-313.pyc',
+   'Trabalho\\Softbank\\interface\\__pycache__\\pessoa.cpython-313.pyc',
    'DATA'),
-  ('inteface\\depo.py',
-   'C:\\Users\\thiag\\OneDrive\\Área de Trabalho\\Softbank\\inteface\\depo.py',
-   'DATA'),
-  ('inteface\\moeda.py',
-   'C:\\Users\\thiag\\OneDrive\\Área de Trabalho\\Softbank\\inteface\\moeda.py',
-   'DATA'),
-  ('inteface\\pessoa.py',
+  ('interface\\__pycache__\\saque.cpython-313.pyc',
    'C:\\Users\\thiag\\OneDrive\\Área de '
-   'Trabalho\\Softbank\\inteface\\pessoa.py',
+   'Trabalho\\Softbank\\interface\\__pycache__\\saque.cpython-313.pyc',
    'DATA'),
-  ('inteface\\saque.py',
-   'C:\\Users\\thiag\\OneDrive\\Área de Trabalho\\Softbank\\inteface\\saque.py',
+  ('interface\\depo.py',
+   'C:\\Users\\thiag\\OneDrive\\Área de Trabalho\\Softbank\\interface\\depo.py',
+   'DATA'),
+  ('interface\\moeda.py',
+   'C:\\Users\\thiag\\OneDrive\\Área de '
+   'Trabalho\\Softbank\\interface\\moeda.py',
+   'DATA'),
+  ('interface\\pessoa.py',
+   'C:\\Users\\thiag\\OneDrive\\Área de '
+   'Trabalho\\Softbank\\interface\\pessoa.py',
+   'DATA'),
+  ('interface\\saque.py',
+   'C:\\Users\\thiag\\OneDrive\\Área de '
+   'Trabalho\\Softbank\\interface\\saque.py',
    'DATA'),
   ('base_library.zip',
    'C:\\Users\\thiag\\OneDrive\\Área de '
@@ -291,7 +304,7 @@
  [],
  False,
  False,
- 1737380428,
+ 1737425972,
  [('runw.exe',
    'C:\\Users\\thiag\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python313\\site-packages\\PyInstaller\\bootloader\\Windows-64bit-intel\\runw.exe',
    'EXECUTABLE')],

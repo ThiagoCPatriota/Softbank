@@ -5,7 +5,7 @@ db = SqliteDatabase('eldatabase/database_softbank.db')
 class User(Model):
     nome = CharField()
     email = CharField(unique=True)
-    senha = FloatField()
+    senha = CharField()
     cpf = CharField(unique=True)
 
     class Meta:
