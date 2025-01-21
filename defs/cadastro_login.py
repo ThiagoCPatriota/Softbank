@@ -301,8 +301,11 @@ def esq_senha(page):
         else:
             try:
                 usuario = User.get((User.cpf == cpf.value) & (User.email == email.value))
+                conta = Account.get((Account.cpf == cpf.value) & (Account.email == email.value))
                 usuario.senha = codificar_senha(conf_nova_senha.value)
+                conta.senha = codificar_senha(conf_nova_senha.value)
                 usuario.save()
+                conta.save()
                 Cadslog(page)  
             except DoesNotExist:
                 mensagem.value = 'Usuário não encontrado'
