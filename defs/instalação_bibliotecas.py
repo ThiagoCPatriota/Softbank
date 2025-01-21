@@ -14,5 +14,3 @@ def instalacao_bibliotecas():
 
     for biblioteca in bibliotecas:
         verificar_e_instalar(biblioteca)
-
-

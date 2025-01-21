@@ -88,22 +88,25 @@ def Cadastro(page):
     email = ft.TextField(label='Digite seu email:')
     senha = ft.TextField(label='Digite sua senha:', password=True)
     cpf = ft.TextField(label='Digite seu cpf (apenas números):', max_length=11)
+    cartao = ft.TextField(label='Digite o numero do seu cartão:', max_length=16)
     mensagem = ft.Text(value='')
     def Confirmar_Cadastro(e):
         mensagem.color='RED'
         if not nome.value:
-            mensagem.value = 'Porfavor, Insira um nome válido!'
+            mensagem.value = 'Porfavor, Preencha um nome válido!'
         elif not email.value:
-            mensagem.value = 'Porfavor, Insira um email válido!'
+            mensagem.value = 'Porfavor, Preencha um email válido!'
         elif not senha.value:
-            mensagem.value = 'Porfavor, Insira uma senha válida!'
+            mensagem.value = 'Porfavor, Preencha uma senha válida!'
         elif not cpf.value:
-            mensagem.value = 'Porfavor, Insira uma CPF válido!'
+            mensagem.value = 'Porfavor, Preencha um CPF válido!'
+        elif not cartao.value:
+            mensagem.value = 'Porfavor, Preencha um Cartão válido!'
         else:
             try:
-                if validador_cpf(cpf.value):
-                    User.create(nome=nome.value, email=email.value, senha=codificar_senha(senha.value), cpf=cpf.value)
-                    Account.create(email=email.value, usuario=nome.value, saldo=0)
+                if validador_cpf(cpf.value) and validar_cartao(cartao.value):
+                    usuario = User.create(nome=nome.value, email=email.value, senha=codificar_senha(senha.value), cpf=cpf.value)
+                    Account.create(email=email.value, usuario=nome.value, saldo=0, cartao=cartao.value, senha=usuario.senha, cpf = cpf.value)
                     mensagem.value = 'Cadastro Realizado com Sucesso!'
                     mensagem.color = 'green'
                     Cadslog(page)
@@ -142,6 +145,7 @@ def Cadastro(page):
                                 email,
                                 senha,
                                 cpf,
+                                cartao,
                                 mensagem,
                                 ft.Row(
                                     controls = [

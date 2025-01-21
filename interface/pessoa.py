@@ -30,7 +30,7 @@ def Perfil(page, conta):
                                 fit=ft.ImageFit.CONTAIN, #Ajusta a img ao tamanho defi. mat. propor.
                             ),
                             ft.Text(
-                                value=f"NOME: {conta.usuario}\nEMAIL: {conta.email}\nSALDO: {conta.saldo}",
+                                value=f"NOME: {conta.usuario}\nEMAIL: {conta.email}\nSALDO: {conta.saldo}\nCartão: {conta.cartao}",
                                 color="#FFFFFF",
                                 weight = 'bold',
                                 size=16,

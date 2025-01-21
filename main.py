@@ -22,4 +22,12 @@ def main(page :ft.Page):
 
 ft.app(target=main)
 
-#     64042544096
+
+
+#                           19497681046
+#Outro Cartão               5473048247691013
+
+
+
+#                           64042544096
+#Cartao para testes:        4532015112830366

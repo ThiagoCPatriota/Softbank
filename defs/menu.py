@@ -3,7 +3,7 @@ from interface.depo import Deposito
 from interface.moeda import Moedas
 from interface.pessoa import Perfil
 from interface.saque import Retirar
-
+from interface.area_pix import area_pix
 def Nav(page, conta):
     page.navigation_bar = ft.NavigationBar(
         destinations=[
@@ -11,6 +11,7 @@ def Nav(page, conta):
             ft.NavigationDestination(icon=ft.icons.CURRENCY_BITCOIN_SHARP, label='Moeda'),
             ft.NavigationDestination(icon=ft.icons.ATTACH_MONEY_SHARP, label='Saque'),
             ft.NavigationDestination(icon=ft.icons.MOVE_TO_INBOX_ROUNDED, label='Deposito'),
+            ft.NavigationDestination(icon=ft.Icons.PIX, label='Área pix'),
         ],
         on_change=lambda e: hot_bar(e, page, conta),
     )
@@ -28,6 +29,8 @@ def hot_bar(e, page, conta):
         Retirar(page, conta)
     elif e.control.selected_index == 3:
         Deposito(page, conta)
+    elif e.control.selected_index == 4:
+        area_pix(page, conta)
     page.update()
 
 

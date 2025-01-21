@@ -26,7 +26,7 @@ def validador_cpf(cpf):
     return False
 
 #CPF VALIDO PARA TESTES:    64042544096
-
+#Cartao para testes:        4532015112830366
 def obter_cotacao_bitcoin():
     url = "https://economia.awesomeapi.com.br/last/BTC-BRL"
     resposta = requests.get(url)
@@ -39,6 +39,21 @@ def obter_cotacao_bitcoin():
     else:
 
         return "Erro ao obter a cotação"
+
+def validar_cartao(numero_cartao):
+    digitos = [int(digito) for digito in numero_cartao]
+    
+    soma = 0
+    tamanho = len(digitos)
+    for i in range(tamanho):
+        digito = digitos[-(i + 1)]
+        if i % 2 == 1: 
+            digito *= 2
+            if digito > 9: 
+                digito -= 9
+        soma += digito 
+
+    return soma % 10 == 0
 
 def codificar_senha(senha):
     # Converter a senha para bytes
