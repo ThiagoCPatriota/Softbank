@@ -1,4 +1,6 @@
 import requests
+import bcrypt
+import random 
 def validador_cpf(cpf):
     cpf_c = ''
     aux = 10
@@ -25,7 +27,7 @@ def validador_cpf(cpf):
     return False
 
 #CPF VALIDO PARA TESTES:    64042544096
-
+#Cartao para testes:        4532015112830366
 def obter_cotacao_bitcoin():
     url = "https://economia.awesomeapi.com.br/last/BTC-BRL"
     resposta = requests.get(url)
@@ -38,4 +40,34 @@ def obter_cotacao_bitcoin():
     else:
 
         return "Erro ao obter a cotação"
+
+def cartao_create():
+
+    numero_cartao = ""
+
+    for i in range(16):
+        numero = random.randint(1, 9)
+
+        numero_cartao += str(numero)
+
+    return numero_cartao
+
+
     
+
+
+def codificar_senha(senha):
+    # Converter a senha para bytes
+    senha_bytes = senha.encode("utf-8")
+    # Gerar o salt e criar o hash
+    hash_senha = bcrypt.hashpw(senha_bytes, bcrypt.gensalt())
+    return hash_senha.decode("utf-8")
+
+# Verificar a senha
+def verificar_senha(senha, hash_senha):
+    # Converter a senha para bytes
+    senha_bytes = senha.encode("utf-8")
+    hash_senha_bytes = hash_senha.encode("utf-8")
+
+    # Comparar a senha fornecida com o hash armazenado
+    return bcrypt.checkpw(senha_bytes, hash_senha_bytes)
