@@ -1,5 +1,6 @@
 import requests
 import bcrypt
+import random
 def validador_cpf(cpf):
     cpf_c = ''
     aux = 10
@@ -40,20 +41,26 @@ def obter_cotacao_bitcoin():
 
         return "Erro ao obter a cotação"
 
-def validar_cartao(numero_cartao):
-    digitos = [int(digito) for digito in numero_cartao]
-    
-    soma = 0
-    tamanho = len(digitos)
-    for i in range(tamanho):
-        digito = digitos[-(i + 1)]
-        if i % 2 == 1: 
-            digito *= 2
-            if digito > 9: 
-                digito -= 9
-        soma += digito 
-
-    return soma % 10 == 0
+import random
+def criar_cartao():
+    while True:
+        cartao = [random.randint(1, 9) for i in range(16)]
+        num_cartao = ''
+        for i in cartao:
+            num_cartao += str(i)
+        soma = 0
+        tamanho = len(cartao)
+        for i in range(tamanho):
+            digito = cartao[-(i + 1)]
+            if i % 2 == 1: 
+                digito *= 2
+                if digito > 9: 
+                    digito -= 9
+            soma += digito
+        if soma%10 ==0:
+            return num_cartao
+        else:
+            continue
 
 def codificar_senha(senha):
     # Converter a senha para bytes

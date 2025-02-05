@@ -86,7 +86,6 @@ def Cadastro(page):
     email = ft.TextField(label='Digite seu email:')
     senha = ft.TextField(label='Digite sua senha:', password=True)
     cpf = ft.TextField(label='Digite seu cpf (apenas números):', max_length=11)
-    cartao = ft.TextField(label='Digite o numero do seu cartão:', max_length=16)
     mensagem = ft.Text(value='')
 
     def Confirmar_Cadastro(e):
@@ -99,13 +98,11 @@ def Cadastro(page):
             mensagem.value = 'Por favor, preencha uma senha válida!'
         elif not cpf.value:
             mensagem.value = 'Por favor, preencha um CPF válido!'
-        elif not cartao.value:
-            mensagem.value = 'Por favor, preencha um Cartão válido!'
         else:
             try:
-                if validador_cpf(cpf.value) and validar_cartao(cartao.value):
+                if validador_cpf(cpf.value) and cpf.value == '00000000000':
                     usuario = User.create(nome=nome.value, email=email.value, senha=codificar_senha(senha.value), cpf=cpf.value)
-                    Account.create(email=email.value, usuario=nome.value, saldo=0, cartao=cartao.value, senha=usuario.senha, cpf=cpf.value)
+                    Account.create(email=email.value, usuario=nome.value, saldo=0, cartao=criar_cartao(), senha=usuario.senha, cpf=cpf.value)
                     mensagem.value = 'Cadastro Realizado com Sucesso!'
                     mensagem.color = 'green'
                     Cadslog(page)
@@ -144,7 +141,6 @@ def Cadastro(page):
                             email,
                             senha,
                             cpf,
-                            cartao,
                             mensagem,
                             ft.Row(
                                 controls=[
